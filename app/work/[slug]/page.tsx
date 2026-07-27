@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "../../caseData";
+import { ResizableDocumentWindow } from "./ResizableDocumentWindow";
 import "./case.css";
 
 export function generateStaticParams() {
@@ -43,7 +44,7 @@ export default async function CasePage({
 
       <section className="case-hero">
         <p>{project.category}</p>
-        <h1>{project.title}</h1>
+        <h1 lang="zh-CN">{project.title}</h1>
         <h2>{project.englishTitle}</h2>
         <div className="case-meta">
           <span>YEAR / {project.year}</span>
@@ -54,34 +55,14 @@ export default async function CasePage({
 
       <section className="case-summary">
         <span>OVERVIEW</span>
-        <p>{project.summary}</p>
+        <p lang="zh-CN">{project.summary}</p>
       </section>
 
-      <section className="document-window">
-        <div className="document-bar">
-          <span>{project.document ? "CASE-STUDY.PDF" : "PROJECT-PREVIEW.PNG"}</span>
-          <div>
-            <i />
-            <i />
-            <i />
-          </div>
-        </div>
-        {project.document ? (
-          <object
-            data={project.document}
-            type="application/pdf"
-            aria-label={`${project.title} PDF 案例`}
-          >
-            <img src={project.image} alt={`${project.title} 项目预览`} />
-          </object>
-        ) : (
-          <img
-            className="case-detail-image"
-            src={project.image}
-            alt={`${project.title} 项目预览`}
-          />
-        )}
-      </section>
+      <ResizableDocumentWindow
+        document={project.document}
+        image={project.image}
+        title={project.title}
+      />
 
       <aside className="case-placeholder-note">
         <span>NEXT ITERATION</span>
@@ -97,7 +78,7 @@ export default async function CasePage({
           .map((item) => (
             <Link key={item.slug} href={`/work/${item.slug}`}>
               <span>{item.index}</span>
-              <strong>{item.title}</strong>
+              <strong lang="zh-CN">{item.title}</strong>
               <i>↗</i>
             </Link>
           ))}

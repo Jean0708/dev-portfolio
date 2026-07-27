@@ -13,8 +13,34 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "daily-lazcash",
+    slug: "credit-activity",
     index: "01",
+    title: "Credit 活动",
+    englishTitle: "Credit Back / Win Credit",
+    category: "增长设计 · 电商活动 · 用户体验",
+    year: "2025",
+    image: "/cases/credit-activity.png",
+    document: "/documents/credit-activity.pdf",
+    summary:
+      "围绕返现权益与轻量互动，优化参与、支付与复购的完整增长链路。",
+    tone: "tone-forest",
+  },
+  {
+    slug: "balance-activity",
+    index: "02",
+    title: "Balance 活动",
+    englishTitle: "Gamified Balance Experience",
+    category: "增长设计 · 积分活动 · 体验优化",
+    year: "2024",
+    image: "/cases/balance-activity.png",
+    document: "/documents/balance-activity.pdf",
+    summary:
+      "以积分权益和任务节奏为核心，建立更容易理解、参与和持续回访的活动体验。",
+    tone: "tone-lime",
+  },
+  {
+    slug: "daily-lazcash",
+    index: "03",
     title: "Daily LazCash 调研助手",
     englishTitle: "Gamified Research Assistant",
     category: "增长设计 · 用户研究 · AI 工作流",
@@ -26,7 +52,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "xiaolu-medical",
-    index: "02",
+    index: "04",
     title: "小麓医疗导诊机器人",
     englishTitle: "Medical Guidance Robot",
     category: "服务设计 · 智能硬件 · 交互设计",
@@ -39,7 +65,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "dance-plus",
-    index: "03",
+    index: "05",
     title: "Dance+ 舞蹈家",
     englishTitle: "Connected Dance Experience",
     category: "多端体验 · 交互设计 · 视觉设计",
@@ -52,7 +78,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "wildsit-game",
-    index: "04",
+    index: "06",
     title: "Wildsit 科普小游戏",
     englishTitle: "Nature Learning Game",
     category: "游戏化设计 · 插画 · 儿童体验",

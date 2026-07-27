@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = host ? `${protocol}://${host}` : "http://localhost:3000";
   const title = "Jean Zhou — Experience Designer";
   const description =
-    "Jean Zhou 的个人作品集：把复杂系统，设计成自然、清晰、有人情味的体验。";
+    "Jean Zhou 的个人作品集：理解复杂问题，设计清晰、温和且可验证的体验。";
 
   return {
     metadataBase: new URL(origin),
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${origin}/og.png`,
           width: 1536,
           height: 864,
-          alt: "Jean Zhou 作品集：把复杂，设计得更轻一点。",
+          alt: "Jean Zhou 作品集：理解复杂问题，设计清晰的体验。",
         },
       ],
     },

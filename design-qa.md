@@ -1,71 +1,114 @@
-# Design QA
+# Design QA — Resizable Case Window and Cinematic IP Intro
 
-## Evidence
+## Source visual truth
 
-- Source visual truth:
-  - `/var/folders/9z/bdrtng4j073554bq2s5wrbb00000gn/T/codex-clipboard-575ffd42-5e84-4aa2-88b9-ab9387332498.png`
+- Case window layout reference:
+  - `/var/folders/9z/bdrtng4j073554bq2s5wrbb00000gn/T/codex-clipboard-ce8843fa-749e-4531-9131-eee2d770af63.png`
+- Retro resizable-window style reference:
+  - `/var/folders/9z/bdrtng4j073554bq2s5wrbb00000gn/T/codex-clipboard-af43ff07-f40a-4cc2-8fa2-d5b2ce7ca9b4.png`
+- Frosted play-button reference:
+  - `/var/folders/9z/bdrtng4j073554bq2s5wrbb00000gn/T/codex-clipboard-15c5ef7c-713e-4228-959f-8887bb969913.png`
+- Draggable retro-window reference:
+  - `/var/folders/9z/bdrtng4j073554bq2s5wrbb00000gn/T/codex-clipboard-c8dd6d3b-d920-48e2-97f9-8e60d2e1a022.png`
+- Video edge-spacing correction reference:
+  - `/var/folders/9z/bdrtng4j073554bq2s5wrbb00000gn/T/codex-clipboard-090c00c7-5069-4677-a3b0-c0ca373a512a.png`
+- Supplied hero still:
   - `/Users/jean/Desktop/Jean的作品案例整理/10_IP设计/定格背景.png`
+- Supplied hero video:
   - `/Users/jean/Desktop/Jean的作品案例整理/10_IP设计/小狗奔跑.mp4`
-- Implementation:
-  - `design-qa-implementation-home.png`
-  - `design-qa-implementation-detail.png`
-  - `design-qa-implementation-mobile-intro.png`
-  - `design-qa-implementation-mobile-about.png`
-- Combined comparison: `design-qa-comparison.png`
-- Desktop viewport override: 1440 × 900 CSS px.
-- Desktop screenshot pixels: 1425 × 891; device scale factor 1. No density normalization was required.
-- Mobile viewport override: 390 × 844 CSS px; device scale factor 1.
-- Source pixels: mood-board reference 736 × 1104; supplied hero still 1672 × 941.
-- State: homepage after the first IP-video cycle, plus the initial video state, profile state, selected-work state, medical case detail, and PDF viewer state.
+
+## Implementation evidence
+
+- Implementation URL:
+  - `http://localhost:3000/`
+  - `http://localhost:3000/work/credit-activity`
+- Case window desktop:
+  - `/private/tmp/jean-resizable-window-desktop.png`
+- Case window resized state:
+  - `/private/tmp/jean-resizable-window-verified.png`
+- Case window mobile:
+  - `/private/tmp/jean-resizable-window-mobile.png`
+- Hero initial state:
+  - `/private/tmp/jean-hero-initial-glass-play.png`
+- Hero expanded and playing:
+  - `/private/tmp/jean-hero-expanded-playing.png`
+- Hero final faded state:
+  - `/private/tmp/jean-hero-final-faded.png`
+- Hero draggable retro-window state:
+  - `/private/tmp/jean-home-draggable-window.png`
+- Case draggable retro-window state:
+  - `/private/tmp/jean-case-draggable-window.png`
+- Hero edge-to-edge video state:
+  - `/private/tmp/jean-home-video-edge-to-edge-desktop.png`
+- Side-by-side comparison boards:
+  - `/private/tmp/jean-window-reference-comparison.png`
+  - `/private/tmp/jean-hero-reference-comparison.png`
+  - `/private/tmp/jean-draggable-window-reference-comparison.png`
+  - `/private/tmp/jean-home-video-edge-reference-comparison-desktop.png`
+
+## Viewports and normalization
+
+- Case desktop CSS viewport: 1440 × 900.
+- Case desktop screenshot: 1418 × 1812 pixels; browser density and visible-page capture retained.
+- Case resized screenshot: 1425 × 891 pixels.
+- Case mobile CSS viewport: 390 × 844.
+- Case mobile screenshot: 375 × 812 pixels.
+- Hero browser viewport: 454 × 690 CSS pixels and screenshot pixels.
+- Frosted-button reference: 520 × 212 pixels.
+- Retro-window reference: 736 × 1308 pixels.
+- Comparison boards use contain-fit normalization on a shared neutral canvas. The references are style crops rather than full-page screens, so focused component comparison is used instead of claiming exact full-page scale equivalence.
 
 ## Full-view comparison
 
-The combined comparison places the mood-board reference, exact supplied meadow/IP still, and the browser-rendered homepage in one image. The implementation preserves the requested sky-and-meadow warmth, desktop-window framing, cream paper surfaces, high-contrast serif hierarchy, compact sans-serif labels, and a restrained lime accent. It converts the collage reference into a calmer portfolio composition instead of copying its dense slide layout.
+- The case page retains its dark portfolio context while the document viewer now carries the reference's classic desktop-window hierarchy: title bar, square window controls, menu row, canvas, status strip, and a visible resize corner.
+- The hero preserves the supplied scenic background. The initial state uses a single frosted circular play icon with no explanatory copy. The expanded state becomes a full-background film layer, then fades away to reveal the final hero.
+- The homepage animation window now uses the same forest-green title bar, paper menu strip, square window controls, and inner bevel as the case viewer. The compact window can be repositioned without changing the play interaction.
+- The video/still now begins immediately below the menu strip and reaches the left, right, and bottom edges of the content area. The former 3–5 pixel inner grey frame has been removed.
+- The final mobile hero keeps the headline above the dog subject without a single-character orphan line.
 
-## Focused region comparison
+## Focused component comparison
 
-- Hero: browser captures verify both the full-window opening animation and the post-animation editorial layout.
-- About: the mobile and desktop captures verify folder tabs, paper hierarchy, IP crop, and responsive stacking.
-- Work: browser capture verifies real project images inside the folder-card system.
-- Detail: browser capture verifies the dark secondary-page language and the live PDF document window.
-- Additional pixel crops were not needed because the required typography, controls, imagery, and card edges are clearly readable in the captured desktop and mobile states.
+- Play control: the implementation matches the reference's isolated circular play affordance and translucent glass treatment, while intentionally removing the attached text panel per the latest direction.
+- Case window: the implementation translates the old desktop/Paint chrome into the portfolio's forest-green and paper palette without copying unrelated poster imagery.
+- Resize affordance: the lower-right handle is visible, uses the existing Phosphor icon set, supports pointer dragging, double-click reset, and keyboard arrow resizing.
+- Move affordance: both window title bars use the same move state and bounded positioning. Pointer dragging is the primary interaction; focused title bars also support keyboard arrow movement.
+
+## Interaction verification
+
+- Initial frosted play icon: visible and uniquely accessible.
+- Click play: passed; hero enters `hero-expanded`, video begins, and the film window fills the hero.
+- Edge-to-edge media: passed at 1174 × 682; no inner border or padding remains around the video viewport.
+- Hover/skip affordance: skip control appears in the playing DOM and is the sole full-film interaction target.
+- Click skip: passed; phase changes through fade to done, video opacity reaches zero, and playback pauses.
+- Natural video ending: passed; film fades out and the still-background hero remains.
+- Case minimize and expand: passed; height changes to 40 pixels and restores.
+- Case maximize and restore: passed; class and height change correctly.
+- Case resize: passed; keyboard verification changed the window from 1365 × 738 to 1341 × 714 pixels. Pointer drag uses the same size state.
+- Homepage move: passed; keyboard verification changed the window transform from `translate3d(0px, 0px, 0px)` to `translate3d(14px, 14px, 0px)`. Pointer dragging uses the same position state.
+- Case move: passed; keyboard verification changed the window transform from `translate3d(0px, 0px, 0px)` to `translate3d(16px, 16px, 0px)`. Pointer dragging uses the same position state.
+- Move and resize affordances are separated: title bar moves, lower-right handle resizes.
+- Mobile case window: passed at 390 × 844 without horizontal overflow.
+- Browser console: no errors.
+- Production build: passed.
+- Lint: passed with image-optimization warnings only; no errors.
 
 ## Findings
 
-- No actionable P0, P1, or P2 issues remain.
-- Fonts and typography: Instrument Serif and Inter produce the intended editorial/system contrast; Chinese copy uses the declared CJK fallback. Headline wrapping is controlled at desktop and mobile widths.
-- Spacing and layout rhythm: the first viewport has a clear left-copy/right-window split, generous section breathing room, and a consistent 18–26 px component radius family. Mobile sections stack without horizontal overflow.
-- Colors and visual tokens: meadow blue/green, warm cream, forest green, folder yellow, and lime accent map consistently across the homepage and dark case pages.
-- Image quality and asset fidelity: the supplied IP video and still are used directly; project cards use original case imagery; no visible project imagery is replaced with a placeholder.
-- Copy and content: project names and categories are grounded in the supplied case folders. Unconfirmed employment details are explicitly marked as content to refine rather than presented as facts.
+- No actionable P0, P1, or P2 differences remain for the requested states.
 
 ## Comparison history
 
-1. First desktop and mobile pass
-   - P2: the Chinese hero headline wrapped too tightly on narrow screens.
-   - P2: the medical case title orphaned its final character on desktop.
-2. Fixes
-   - Reduced and rebalanced hero headline sizing and line height, with desktop nowrap and mobile-specific wrapping.
-   - Increased the detail-title measure and reduced its responsive maximum size.
-   - Added anchor scroll margins so fixed navigation does not obscure section headings.
-3. Post-fix evidence
-   - `design-qa-implementation-home.png` shows the final hero hierarchy.
-   - `design-qa-implementation-detail.png` shows the medical title on one line.
-   - Mobile captures show the intro window and folder profile without overflow.
-
-## Primary interactions tested
-
-- IP video autoplay, fade monitoring, ended-state reveal, manual replay, and Skip Intro.
-- Anchor navigation and section scrolling.
-- Profile folder tabs and selected state.
-- Project-card navigation to secondary routes.
-- Dark case page, embedded PDF viewer, back navigation, and related-case links.
-- Desktop and mobile responsive states.
-- Browser console errors checked: none from the site.
+1. The case viewer initially had a generic rounded frame with decorative dots. It was replaced with a functional retro title bar, menu row, status strip, resize handle, and working window controls.
+2. Native browser resizing was too subtle and difficult to verify. It was replaced with an explicit custom resize handle and keyboard resizing support.
+3. The hero initially included “PLAY THE STORY” copy plus replay and close controls. Those were removed in favor of one frosted play icon and a one-shot cinematic sequence.
+4. The expanded video initially behaved as a contained player. It now grows into the full hero background and fades out on skip or natural completion.
+5. The first mobile title size left a single Chinese character on its own line. The mobile display size was reduced so the phrase wraps as a balanced block.
+6. The homepage small window and case viewer previously used related but different chrome. They now share one retro desktop-window language, with movement constrained to their owning page region.
+7. The video viewport previously retained a grey inner frame. It was removed so the media is embedded flush inside the window content area.
 
 ## Follow-up polish
 
-- P3: the next iteration can replace provisional biography and experience copy with the final resume wording.
-- P3: project-card ordering, cover crops, and richer hover choreography can be refined after the homepage direction is approved.
+- [P3] Fine-tune glass opacity after the user compares it on their own display brightness.
+- [P3] Adjust the skip-icon reveal position if the user prefers top-right rather than centered hover feedback.
 
 final result: passed
