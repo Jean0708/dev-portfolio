@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="4780" viewBox="0 0 1600 4780">
+  <title>Jean Zhou Portfolio — Case Detail Interaction Wireframe</title>
+  <desc>Editable low-fidelity case detail page structure with PDF and image variants.</desc>
+  <defs>
+    <style>
+      .page { fill:#101712; stroke:#101712; stroke-width:2; }
+      .panel { fill:#1A251D; stroke:#7E8A80; stroke-width:1.5; }
+      .paper { fill:#F2EFE6; stroke:#7E8A80; stroke-width:1.5; }
+      .media { fill:#D8DDD4; stroke:#657166; stroke-width:1.5; stroke-dasharray:10 8; }
+      .note { fill:#FFF4C7; stroke:#A17F26; stroke-width:1.5; }
+      .note-line { fill:none; stroke:#A17F26; stroke-width:1.5; stroke-dasharray:7 6; }
+      .divider { stroke:#667067; stroke-width:1.5; }
+      .label { font-family:Inter, "PingFang SC", sans-serif; font-size:18px; font-weight:700; fill:#EDF0E9; letter-spacing:1px; }
+      .small { font-family:Inter, "PingFang SC", sans-serif; font-size:15px; fill:#AEB7AF; }
+      .body { font-family:Inter, "PingFang SC", sans-serif; font-size:20px; fill:#EDF0E9; }
+      .title { font-family:Inter, "PingFang SC", sans-serif; font-size:58px; font-weight:650; fill:#EDF0E9; }
+      .paper-text { font-family:Inter, "PingFang SC", sans-serif; font-size:18px; fill:#1F2B22; }
+      .note-text { font-family:Inter, "PingFang SC", sans-serif; font-size:17px; fill:#6D5518; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#A17F26"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="4780" fill="#E9E7E1"/>
+  <text x="40" y="42" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#1F2B22">JEAN ZHOU PORTFOLIO · CASE DETAIL WIREFRAME · DESKTOP 1440</text>
+
+  <g id="page-frame">
+    <rect x="40" y="70" width="1180" height="4640" rx="10" class="page"/>
+
+    <g id="case-navigation">
+      <text x="80" y="130" class="label">JEAN ZHOU®</text>
+      <text x="575" y="130" class="small">ARCHIVE / 01</text>
+      <text x="1090" y="130" class="small">CLOSE ×</text>
+      <line x1="80" y1="165" x2="1180" y2="165" class="divider"/>
+    </g>
+
+    <g id="case-hero">
+      <text x="80" y="255" class="small">项目分类 / CATEGORY</text>
+      <text x="80" y="370" class="title">案例项目中文名称</text>
+      <text x="80" y="430" class="body">English Project Title</text>
+      <text x="80" y="565" class="small">YEAR / 2025</text>
+      <text x="300" y="565" class="small">TYPE / CASE STUDY</text>
+      <text x="590" y="565" class="small">STATUS / CURATING</text>
+      <line x1="80" y1="630" x2="1180" y2="630" class="divider"/>
+    </g>
+
+    <g id="case-overview">
+      <text x="80" y="735" class="label">OVERVIEW</text>
+      <text x="360" y="735" class="body">项目背景与核心价值的一段摘要。</text>
+      <text x="360" y="775" class="body">控制在 2–4 行，说明问题、方法和结果。</text>
+      <line x1="80" y1="860" x2="1180" y2="860" class="divider"/>
+    </g>
+
+    <g id="case-document-window">
+      <rect x="80" y="950" width="1100" height="1900" rx="22" class="paper"/>
+      <rect x="80" y="950" width="1100" height="54" rx="22" fill="#E4E1D8" stroke="#7E8A80" stroke-width="1.5"/>
+      <text x="105" y="985" class="paper-text">CASE-STUDY.PDF / PROJECT-PREVIEW.PNG</text>
+      <circle cx="1115" cy="977" r="7" fill="#C9FF6B" stroke="#1F2B22"/>
+      <circle cx="1140" cy="977" r="7" fill="none" stroke="#1F2B22"/>
+      <circle cx="1165" cy="977" r="7" fill="none" stroke="#1F2B22"/>
+      <rect x="120" y="1045" width="1020" height="1740" rx="8" class="media"/>
+      <text x="630" y="1885" text-anchor="middle" class="paper-text">PDF 浏览器 / 长图展示区</text>
+      <text x="630" y="1930" text-anchor="middle" class="paper-text">有 PDF：嵌入文件 · 无 PDF：直接展示项目图片</text>
+    </g>
+
+    <g id="case-next-iteration">
+      <rect x="80" y="2890" width="1100" height="180" rx="18" class="panel"/>
+      <text x="115" y="2950" class="label">NEXT ITERATION</text>
+      <text x="390" y="2950" class="small">项目叙事、个人职责、过程图与结果数据待整理后补充。</text>
+      <text x="390" y="2990" class="small">此模块可以在交互稿中拆成多个内容章节。</text>
+    </g>
+
+    <g id="related-cases">
+      <text x="80" y="3210" class="label">MORE SELECTED WORK</text>
+      <rect x="80" y="3270" width="345" height="260" rx="18" class="panel"/>
+      <text x="110" y="3320" class="small">02</text>
+      <text x="110" y="3405" class="body">小麓医疗导诊机器人</text>
+      <text x="365" y="3480" class="body">↗</text>
+      <rect x="452" y="3270" width="345" height="260" rx="18" class="panel"/>
+      <text x="482" y="3320" class="small">03</text>
+      <text x="482" y="3405" class="body">Dance+ 舞蹈家</text>
+      <text x="737" y="3480" class="body">↗</text>
+      <rect x="824" y="3270" width="356" height="260" rx="18" class="panel"/>
+      <text x="854" y="3320" class="small">04</text>
+      <text x="854" y="3405" class="body">Wildsit 科普小游戏</text>
+      <text x="1120" y="3480" class="body">↗</text>
+    </g>
+
+    <g id="case-content-extension">
+      <rect x="80" y="3640" width="1100" height="650" rx="18" fill="none" stroke="#667067" stroke-width="1.5" stroke-dasharray="12 10"/>
+      <text x="110" y="3700" class="label">可选扩展结构</text>
+      <rect x="110" y="3760" width="310" height="210" rx="16" class="panel"/>
+      <text x="140" y="3810" class="small">01 / BACKGROUND</text>
+      <text x="140" y="3880" class="body">项目背景</text>
+      <rect x="450" y="3760" width="310" height="210" rx="16" class="panel"/>
+      <text x="480" y="3810" class="small">02 / ROLE</text>
+      <text x="480" y="3880" class="body">个人职责</text>
+      <rect x="790" y="3760" width="360" height="210" rx="16" class="panel"/>
+      <text x="820" y="3810" class="small">03 / PROCESS</text>
+      <text x="820" y="3880" class="body">设计过程</text>
+      <rect x="110" y="4000" width="500" height="210" rx="16" class="panel"/>
+      <text x="140" y="4050" class="small">04 / OUTCOME</text>
+      <text x="140" y="4120" class="body">结果数据与验证</text>
+      <rect x="640" y="4000" width="510" height="210" rx="16" class="panel"/>
+      <text x="670" y="4050" class="small">05 / REFLECTION</text>
+      <text x="670" y="4120" class="body">复盘与下一步</text>
+    </g>
+
+    <g id="case-footer">
+      <line x1="80" y1="4400" x2="1180" y2="4400" class="divider"/>
+      <text x="80" y="4475" class="small">← BACK TO SELECTED WORK</text>
+      <text x="950" y="4475" class="small">JEAN ZHOU · PORTFOLIO V.01</text>
+    </g>
+  </g>
+
+  <g id="interaction-notes">
+    <rect x="1260" y="160" width="300" height="160" rx="18" class="note"/>
+    <text x="1285" y="200" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#6D5518">页面导航</text>
+    <text x="1285" y="238" class="note-text">CLOSE 返回首页案例区</text>
+    <text x="1285" y="268" class="note-text">顶部导航可改为滚动吸附</text>
+    <path d="M1260 230 C1210 230,1190 180,1140 140" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="990" width="300" height="220" rx="18" class="note"/>
+    <text x="1285" y="1030" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#6D5518">文件展示</text>
+    <text x="1285" y="1068" class="note-text">PDF：浏览器内嵌阅读</text>
+    <text x="1285" y="1098" class="note-text">图片：按原比例直接展示</text>
+    <text x="1285" y="1128" class="note-text">后续可增加全屏与下载入口</text>
+    <path d="M1260 1090 C1210 1090,1180 1120,1140 1190" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="3290" width="300" height="190" rx="18" class="note"/>
+    <text x="1285" y="3330" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#6D5518">案例跳转</text>
+    <text x="1285" y="3368" class="note-text">点击相关案例进入新详情页</text>
+    <text x="1285" y="3398" class="note-text">当前展示三个其他案例</text>
+    <text x="1285" y="3428" class="note-text">可改为“上一个 / 下一个”</text>
+    <path d="M1260 3380 C1210 3380,1180 3400,1140 3420" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="3710" width="300" height="220" rx="18" class="note"/>
+    <text x="1285" y="3750" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#6D5518">推荐调整</text>
+    <text x="1285" y="3788" class="note-text">详情页目前内容较少</text>
+    <text x="1285" y="3818" class="note-text">建议在交互稿中确定章节顺序</text>
+    <text x="1285" y="3848" class="note-text">每章标明图片、文字和数据需求</text>
+    <text x="1285" y="3878" class="note-text">确认后再进入高保真视觉设计</text>
+    <path d="M1260 3820 C1210 3820,1180 3890,1140 3950" class="note-line" marker-end="url(#arrow)"/>
+  </g>
+</svg>

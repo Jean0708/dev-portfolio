@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="7440" viewBox="0 0 1600 7440">
+  <title>Jean Zhou Portfolio — Homepage Interaction Wireframe</title>
+  <desc>Editable low-fidelity homepage structure with interaction notes.</desc>
+  <defs>
+    <style>
+      .page { fill:#F7F5EF; stroke:#1F2B22; stroke-width:2; }
+      .section { fill:#FFFFFF; stroke:#98A098; stroke-width:1.5; }
+      .section-dark { fill:#24372A; stroke:#1F2B22; stroke-width:1.5; }
+      .panel { fill:#F0EDE3; stroke:#657166; stroke-width:1.5; }
+      .media { fill:#D8DDD4; stroke:#657166; stroke-width:1.5; stroke-dasharray:10 8; }
+      .control { fill:#D8F58A; stroke:#1F2B22; stroke-width:1.5; }
+      .note { fill:#FFF4C7; stroke:#A17F26; stroke-width:1.5; }
+      .note-line { fill:none; stroke:#A17F26; stroke-width:1.5; stroke-dasharray:7 6; }
+      .divider { stroke:#98A098; stroke-width:1.5; }
+      .orbit { fill:none; stroke:#C7CEC6; stroke-width:1.5; }
+      .label { font-family:Inter, "PingFang SC", sans-serif; font-size:18px; font-weight:700; fill:#1F2B22; letter-spacing:1px; }
+      .small { font-family:Inter, "PingFang SC", sans-serif; font-size:15px; fill:#536056; }
+      .body { font-family:Inter, "PingFang SC", sans-serif; font-size:20px; fill:#1F2B22; }
+      .title { font-family:Inter, "PingFang SC", sans-serif; font-size:50px; font-weight:650; fill:#1F2B22; }
+      .title-light { font-family:Inter, "PingFang SC", sans-serif; font-size:50px; font-weight:650; fill:#F7F5EF; }
+      .white { fill:#F7F5EF; }
+      .note-text { font-family:Inter, "PingFang SC", sans-serif; font-size:17px; fill:#6D5518; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#A17F26"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="7440" fill="#E9E7E1"/>
+  <text x="40" y="42" class="label">JEAN ZHOU PORTFOLIO · HOMEPAGE WIREFRAME · DESKTOP 1440</text>
+  <text x="1260" y="42" class="small">黄色区域为交互说明，可删除或调整</text>
+
+  <g id="page-frame">
+    <rect x="40" y="70" width="1180" height="7310" rx="10" class="page"/>
+
+    <g id="global-navigation">
+      <rect x="70" y="96" width="1120" height="72" rx="18" class="panel"/>
+      <text x="100" y="140" class="label">JEAN ZHOU®</text>
+      <text x="470" y="140" class="small">WORK　 ABOUT　 PRACTICE　 EXPERIENCE</text>
+      <rect x="1030" y="112" width="130" height="40" rx="14" class="control"/>
+      <text x="1054" y="138" class="small">SAY HELLO</text>
+    </g>
+
+    <g id="hero-section">
+      <rect x="60" y="190" width="1140" height="900" rx="8" fill="#D7E4D1" stroke="#657166" stroke-width="1.5"/>
+      <text x="100" y="240" class="label">00 / HERO · 100VH</text>
+      <rect x="700" y="300" width="430" height="290" rx="20" class="media"/>
+      <rect x="700" y="300" width="430" height="36" rx="20" class="panel"/>
+      <text x="720" y="324" class="small">IP ANIMATION WINDOW</text>
+      <text x="866" y="462" text-anchor="middle" class="body">小狗奔跑视频 / 定格背景</text>
+      <text x="110" y="600" class="small">EXPERIENCE DESIGNER · 2026 PORTFOLIO</text>
+      <text x="110" y="670" class="title">把复杂，</text>
+      <text x="110" y="730" class="title">设计得更轻一点。</text>
+      <text x="110" y="790" class="body">I turn complex systems into clear, gentle experiences.</text>
+      <rect x="110" y="840" width="250" height="52" rx="26" class="control"/>
+      <text x="136" y="873" class="small">EXPLORE SELECTED WORK →</text>
+      <text x="1030" y="1035" class="small">SCROLL ↓</text>
+    </g>
+
+    <g id="about-section">
+      <rect x="60" y="1110" width="1140" height="1140" class="section"/>
+      <text x="100" y="1170" class="label">01 / ABOUT ME</text>
+      <text x="100" y="1240" class="title">A curious mind,</text>
+      <text x="100" y="1298" class="title">a careful maker.</text>
+
+      <g id="profile-folder">
+        <rect x="100" y="1435" width="720" height="650" rx="26" class="panel"/>
+        <rect x="100" y="1380" width="205" height="70" rx="22" class="panel"/>
+        <rect x="300" y="1390" width="205" height="60" rx="22" class="panel"/>
+        <rect x="500" y="1390" width="205" height="60" rx="22" class="panel"/>
+        <text x="158" y="1422" class="small">PROFILE</text>
+        <text x="372" y="1427" class="small">NOW</text>
+        <text x="565" y="1427" class="small">VALUES</text>
+        <text x="150" y="1545" class="small">FILE Nº 001 · JEAN ZHOU</text>
+        <text x="150" y="1640" class="title">体验设计师</text>
+        <text x="150" y="1690" class="body">Experience Designer</text>
+        <text x="150" y="1790" class="body">个人简介与设计关注点</text>
+        <line x1="150" y1="1830" x2="760" y2="1830" class="divider"/>
+        <text x="150" y="1885" class="small">BASED IN CHINA · OPEN TO NEW STORIES</text>
+      </g>
+
+      <g id="ip-card">
+        <rect x="860" y="1450" width="280" height="500" rx="24" class="panel"/>
+        <rect x="890" y="1490" width="220" height="330" rx="18" class="media"/>
+        <text x="1000" y="1660" text-anchor="middle" class="body">IP 三视图</text>
+        <text x="900" y="1870" class="small">MEET MY LITTLE PARTNER</text>
+        <text x="900" y="1915" class="body">萝卜狗</text>
+      </g>
+    </g>
+
+    <g id="work-section">
+      <rect x="60" y="2270" width="1140" height="2220" class="section-dark"/>
+      <text x="100" y="2330" class="label white">02 / SELECTED WORK</text>
+      <text x="100" y="2405" class="title-light">Some things I’ve</text>
+      <text x="100" y="2463" class="title-light">made with care.</text>
+      <text x="840" y="2420" class="small white">案例封面与排序后续可继续调整</text>
+
+      <g id="case-card-01" transform="translate(100 2630)">
+        <circle cx="250" cy="330" r="240" class="orbit"/>
+        <rect x="25" y="80" width="450" height="600" rx="24" class="panel"/>
+        <rect x="25" y="28" width="112" height="62" rx="20" class="panel"/>
+        <rect x="138" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="251" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="364" y="36" width="111" height="54" rx="20" class="panel"/>
+        <text x="52" y="67" class="small">PROJECT 01</text>
+        <text x="163" y="69" class="small">OVERVIEW</text>
+        <text x="280" y="69" class="small">PROCESS</text>
+        <text x="397" y="69" class="small">RESULT</text>
+        <text x="250" y="150" text-anchor="middle" class="small">SELECTED CASE · 2025</text>
+        <text x="250" y="205" text-anchor="middle" class="body">Daily LazCash 调研助手</text>
+        <rect x="65" y="250" width="370" height="300" rx="18" class="media"/>
+        <text x="250" y="405" text-anchor="middle" class="body">CASE COVER</text>
+        <text x="65" y="610" class="small">增长设计 · 用户研究 · AI 工作流</text>
+        <text x="365" y="610" class="small">VIEW →</text>
+      </g>
+
+      <g id="case-card-02" transform="translate(650 2630)">
+        <circle cx="250" cy="330" r="240" class="orbit"/>
+        <rect x="25" y="80" width="450" height="600" rx="24" class="panel"/>
+        <rect x="25" y="28" width="112" height="62" rx="20" class="panel"/>
+        <rect x="138" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="251" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="364" y="36" width="111" height="54" rx="20" class="panel"/>
+        <text x="52" y="67" class="small">PROJECT 02</text>
+        <text x="163" y="69" class="small">OVERVIEW</text>
+        <text x="280" y="69" class="small">PROCESS</text>
+        <text x="397" y="69" class="small">RESULT</text>
+        <text x="250" y="150" text-anchor="middle" class="small">SELECTED CASE · 2023</text>
+        <text x="250" y="205" text-anchor="middle" class="body">小麓医疗导诊机器人</text>
+        <rect x="65" y="250" width="370" height="300" rx="18" class="media"/>
+        <text x="250" y="405" text-anchor="middle" class="body">CASE COVER</text>
+        <text x="65" y="610" class="small">服务设计 · 智能硬件 · 交互设计</text>
+        <text x="365" y="610" class="small">VIEW →</text>
+      </g>
+
+      <g id="case-card-03" transform="translate(100 3395)">
+        <circle cx="250" cy="330" r="240" class="orbit"/>
+        <rect x="25" y="80" width="450" height="600" rx="24" class="panel"/>
+        <rect x="25" y="28" width="112" height="62" rx="20" class="panel"/>
+        <rect x="138" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="251" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="364" y="36" width="111" height="54" rx="20" class="panel"/>
+        <text x="52" y="67" class="small">PROJECT 03</text>
+        <text x="163" y="69" class="small">OVERVIEW</text>
+        <text x="280" y="69" class="small">PROCESS</text>
+        <text x="397" y="69" class="small">RESULT</text>
+        <text x="250" y="150" text-anchor="middle" class="small">SELECTED CASE · 2021</text>
+        <text x="250" y="205" text-anchor="middle" class="body">Dance+ 舞蹈家</text>
+        <rect x="65" y="250" width="370" height="300" rx="18" class="media"/>
+        <text x="250" y="405" text-anchor="middle" class="body">CASE COVER</text>
+        <text x="65" y="610" class="small">多端体验 · 交互设计 · 视觉设计</text>
+        <text x="365" y="610" class="small">VIEW →</text>
+      </g>
+
+      <g id="case-card-04" transform="translate(650 3395)">
+        <circle cx="250" cy="330" r="240" class="orbit"/>
+        <rect x="25" y="80" width="450" height="600" rx="24" class="panel"/>
+        <rect x="25" y="28" width="112" height="62" rx="20" class="panel"/>
+        <rect x="138" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="251" y="36" width="112" height="54" rx="20" class="panel"/>
+        <rect x="364" y="36" width="111" height="54" rx="20" class="panel"/>
+        <text x="52" y="67" class="small">PROJECT 04</text>
+        <text x="163" y="69" class="small">OVERVIEW</text>
+        <text x="280" y="69" class="small">PROCESS</text>
+        <text x="397" y="69" class="small">RESULT</text>
+        <text x="250" y="150" text-anchor="middle" class="small">SELECTED CASE · 2020</text>
+        <text x="250" y="205" text-anchor="middle" class="body">Wildsit 科普小游戏</text>
+        <rect x="65" y="250" width="370" height="300" rx="18" class="media"/>
+        <text x="250" y="405" text-anchor="middle" class="body">CASE COVER</text>
+        <text x="65" y="610" class="small">游戏化设计 · 插画 · 儿童体验</text>
+        <text x="365" y="610" class="small">VIEW →</text>
+      </g>
+    </g>
+
+    <g id="practice-section">
+      <rect x="60" y="4510" width="1140" height="930" class="section"/>
+      <text x="100" y="4570" class="label">03 / PRACTICE</text>
+      <text x="100" y="4645" class="title">Tools are useful.</text>
+      <text x="100" y="4703" class="title">Ways of thinking matter more.</text>
+      <g id="skills-list">
+        <line x1="100" y1="4800" x2="800" y2="4800" class="divider"/>
+        <text x="110" y="4860" class="small">01</text><text x="180" y="4860" class="body">Product &amp; Growth</text>
+        <line x1="100" y1="4900" x2="800" y2="4900" class="divider"/>
+        <text x="110" y="4960" class="small">02</text><text x="180" y="4960" class="body">Experience Design</text>
+        <line x1="100" y1="5000" x2="800" y2="5000" class="divider"/>
+        <text x="110" y="5060" class="small">03</text><text x="180" y="5060" class="body">Visual &amp; Motion</text>
+        <line x1="100" y1="5100" x2="800" y2="5100" class="divider"/>
+        <text x="110" y="5160" class="small">04</text><text x="180" y="5160" class="body">AI-assisted Making</text>
+        <line x1="100" y1="5200" x2="800" y2="5200" class="divider"/>
+      </g>
+      <rect x="850" y="4800" width="290" height="400" rx="22" class="panel"/>
+      <text x="890" y="4860" class="small">EVERYDAY TOOLBOX</text>
+      <text x="890" y="4940" class="body">Figma · Adobe CC</text>
+      <text x="890" y="4980" class="body">ProtoPie · AI Tools</text>
+    </g>
+
+    <g id="experience-section">
+      <rect x="60" y="5460" width="1140" height="1020" class="section"/>
+      <text x="100" y="5520" class="label">04 / EXPERIENCE</text>
+      <text x="100" y="5595" class="title">A trail of</text>
+      <text x="100" y="5653" class="title">learning &amp; making.</text>
+      <g id="timeline">
+        <rect x="100" y="5760" width="1040" height="180" rx="20" class="panel"/>
+        <text x="140" y="5830" class="label">NOW</text>
+        <text x="330" y="5825" class="small">EXPERIENCE DESIGN</text>
+        <text x="330" y="5880" class="body">复杂场景、增长体验与 AI 设计探索</text>
+        <rect x="100" y="5960" width="1040" height="180" rx="20" class="panel"/>
+        <text x="140" y="6030" class="label">2021—24</text>
+        <text x="330" y="6025" class="small">PRODUCT &amp; INTERACTION</text>
+        <text x="330" y="6080" class="body">从概念到落地的多端产品体验设计</text>
+        <rect x="100" y="6160" width="1040" height="180" rx="20" class="panel"/>
+        <text x="140" y="6230" class="label">BEFORE</text>
+        <text x="330" y="6225" class="small">FOUNDATIONS</text>
+        <text x="330" y="6280" class="body">视觉、插画与空间叙事的早期练习</text>
+      </g>
+    </g>
+
+    <g id="contact-footer">
+      <rect x="60" y="6500" width="1140" height="850" fill="#D7E4D1" stroke="#657166" stroke-width="1.5"/>
+      <text x="100" y="6570" class="label">05 / CONTACT · FULL VIEWPORT</text>
+      <text x="100" y="6740" class="title">Let’s make something</text>
+      <text x="100" y="6798" class="title">clear, kind &amp; memorable.</text>
+      <rect x="100" y="6880" width="230" height="54" rx="27" class="control"/>
+      <text x="132" y="6914" class="small">BACK TO THE FIELD ↑</text>
+      <text x="100" y="7270" class="small">JEAN ZHOU · EXPERIENCE DESIGNER</text>
+      <text x="940" y="7270" class="small">PORTFOLIO V.01 / 2026</text>
+    </g>
+  </g>
+
+  <g id="interaction-notes">
+    <rect x="1260" y="170" width="300" height="190" rx="18" class="note"/>
+    <text x="1285" y="210" class="label">首屏交互</text>
+    <text x="1285" y="248" class="note-text">1. 页面进入后自动播放 IP 视频</text>
+    <text x="1285" y="278" class="note-text">2. 播放结束后显示完整导航与文案</text>
+    <text x="1285" y="308" class="note-text">3. SKIP INTRO 可跳过动画</text>
+    <path d="M1260 265 C1210 265,1180 340,1135 380" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="1320" width="300" height="180" rx="18" class="note"/>
+    <text x="1285" y="1360" class="label">个人信息</text>
+    <text x="1285" y="1398" class="note-text">PROFILE / NOW / VALUES 切换内容</text>
+    <text x="1285" y="1428" class="note-text">IP 卡片暂时为静态展示</text>
+    <path d="M1260 1400 C1215 1400,1160 1470,1110 1520" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="2620" width="300" height="220" rx="18" class="note"/>
+    <text x="1285" y="2660" class="label">案例卡片</text>
+    <text x="1285" y="2698" class="note-text">卡片悬停：轻微抬升与图片缩放</text>
+    <text x="1285" y="2728" class="note-text">点击卡片：进入对应案例详情页</text>
+    <text x="1285" y="2758" class="note-text">顶部标签目前为视觉元素</text>
+    <text x="1285" y="2788" class="note-text">需要时可改为筛选或详情锚点</text>
+    <path d="M1260 2730 C1210 2730,1180 2810,1125 2870" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="5790" width="300" height="180" rx="18" class="note"/>
+    <text x="1285" y="5830" class="label">履历区</text>
+    <text x="1285" y="5868" class="note-text">当前为三段时间线</text>
+    <text x="1285" y="5898" class="note-text">公司、岗位与项目内容待补充</text>
+    <path d="M1260 5870 C1210 5870,1180 5920,1135 5990" class="note-line" marker-end="url(#arrow)"/>
+
+    <rect x="1260" y="6610" width="300" height="190" rx="18" class="note"/>
+    <text x="1285" y="6650" class="label">页尾交互</text>
+    <text x="1285" y="6688" class="note-text">背景延续自然绿色视觉</text>
+    <text x="1285" y="6718" class="note-text">按钮返回页面顶部</text>
+    <text x="1285" y="6748" class="note-text">后续可加入邮箱 / 社交方式</text>
+    <path d="M1260 6700 C1210 6700,1180 6820,1125 6890" class="note-line" marker-end="url(#arrow)"/>
+  </g>
+</svg>
