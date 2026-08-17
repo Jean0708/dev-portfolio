@@ -40,3 +40,17 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# local previews and generated working files
+/.playwright-cli/
+/tmp/
+/output/
+/private-assets/
+/scripts/__pycache__/
+*.tsbuildinfo
+
+# design exploration and handoff material (not runtime website source)
+/design-preview.html
+/design.md
+/design/
+/scripts/

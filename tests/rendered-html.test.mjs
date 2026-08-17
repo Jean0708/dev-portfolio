@@ -1,19 +1,33 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { access, readdir, stat } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
+const workerModule = new URL("../dist/server/index.js", import.meta.url);
+const publicRoot = new URL("../public/", import.meta.url);
+const maxStaticAssetBytes = 25 * 1024 * 1024;
+const caseSlugs = [
+  "credit-activity",
+  "balance-activity",
+  "growth-design-archive",
+  "daily-lazcash",
+  "xiaolu-medical",
+  "perxio-research",
+  "hapopus-haptics",
+  "dance-plus",
+  "wildsit-game",
+];
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+let workerPromise;
 
+async function getWorker() {
+  workerPromise ??= import(`${workerModule.href}?test=${Date.now()}`);
+  return (await workerPromise).default;
+}
+
+async function render(pathname) {
+  const worker = await getWorker();
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -28,64 +42,80 @@ async function render() {
   );
 }
 
-test("server-renders the starter loading skeleton", async () => {
-  const response = await render();
+async function collectFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const path = new URL(`${entry.name}${entry.isDirectory() ? "/" : ""}`, directory);
+    if (entry.isDirectory()) {
+      files.push(...(await collectFiles(path)));
+    } else if (entry.isFile()) {
+      files.push(path);
+    }
+  }
+
+  return files;
+}
+
+test("server-renders the current portfolio homepage", async () => {
+  const response = await render("/");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  assert.match(html, /<html lang="zh-CN">/i);
+  assert.match(html, /<title>Jean — Experience Designer<\/title>/i);
+  assert.match(html, /Jean 的个人作品集/);
+  assert.match(html, /LOADING JEAN(?:&#x27;|')S WORLD/);
+  assert.doesNotMatch(html, /Your site is taking shape|codex-preview|react-loading-skeleton/i);
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
-  ]);
+test("server-renders the public lab and all case routes", async () => {
+  const labResponse = await render("/lab");
+  assert.equal(labResponse.status, 200);
+  assert.match(await labResponse.text(), /More Cases|AI Lab/i);
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
+  for (const slug of caseSlugs) {
+    const response = await render(`/work/${slug}`);
+    assert.equal(response.status, 200, `expected /work/${slug} to render`);
+    const html = await response.text();
+    assert.match(html, /<title>[^<]+· Jean<\/title>/i);
+    assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
+  }
+});
 
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
+test("keeps unknown case routes as 404 responses", async () => {
+  const response = await render("/work/not-a-real-case");
+  assert.equal(response.status, 404);
+});
 
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
+test("keeps required public assets available and under the Cloudflare file limit", async () => {
+  const requiredAssets = [
+    "favicon.svg",
+    "og.png",
+    "assets/home/luobogou-opening.mp4",
+    "assets/work-media/ip-animation.mp4",
+    "assets/work-media/mini-game-demo.mp4",
+    "assets/work-media/dance-plus.mp4",
+    "documents/jean-resume.pdf",
+    "case-pages/v2/credit-activity/page-01.jpg",
+    "cases/projects/credit-activity/cover-square.png",
+  ];
 
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  for (const relativePath of requiredAssets) {
+    await access(new URL(relativePath, publicRoot));
+  }
+
+  const files = await collectFiles(publicRoot);
+  const oversizedFiles = [];
+
+  for (const file of files) {
+    const fileStats = await stat(file);
+    if (fileStats.size > maxStaticAssetBytes) {
+      oversizedFiles.push(`${file.pathname} (${fileStats.size} bytes)`);
+    }
+  }
+
+  assert.deepEqual(oversizedFiles, []);
 });

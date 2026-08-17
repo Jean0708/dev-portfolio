@@ -38,6 +38,7 @@ http://localhost:3000/
 ```bash
 npm run build
 npm run lint
+npm test
 ```
 
 ## 主要文件
@@ -50,10 +51,12 @@ app/work/[slug]/page.tsx                 案例详情页
 app/work/[slug]/case.css                 案例页样式
 app/work/[slug]/ResizableDocumentWindow.tsx
                                             可移动、可缩放案例窗口
-public/assets/                           首页图片、视频和纹理
+public/assets/                           首页图片、纹理和网站可调用素材
+public/assets/ip/                        已筛选、可被网站直接引用的 IP 图片和视频
 public/cases/                            案例封面
 public/documents/                        案例 PDF
-design/                                  交互稿与参考文件
+design/                                  交互稿、参考文件与 IP 创意资源库
+design/ip-library/                       IP 源文件、Markdown 设定、参考图和整理记录
 ```
 
 ## 修改建议
