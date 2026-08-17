@@ -3070,16 +3070,18 @@ footer {
 }
 
 .inline-case-reading-status {
-  position: sticky;
+  position: absolute;
   z-index: 4;
-  bottom: 0;
+  right: 12px;
+  bottom: 12px;
   display: grid;
   width: max-content;
   min-width: 64px;
   height: 30px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 10px;
   place-items: center;
+  pointer-events: none;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: rgba(12, 18, 13, 0.88);
@@ -4177,6 +4179,11 @@ footer {
 
   .inline-case-page-viewport {
     padding: 10px 10px 48px;
+  }
+
+  .inline-case-reading-status {
+    right: 10px;
+    bottom: 10px;
   }
 
   .inline-case-thumbnails {
