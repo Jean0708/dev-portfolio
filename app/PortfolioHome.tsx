@@ -165,7 +165,7 @@ const copy = {
     introHeading: "Jean",
     introCopy: "增长体验设计师｜AI 产品设计｜用户研究",
     ipHeading: "Meet Raddie",
-    ipCopy: "一只由比熊和白萝卜长成的小伙伴，也是我练习叙事、动效与情绪设计的长期 IP。",
+    ipCopy: "白萝卜特征的比熊数字生命伙伴Raddie，也是我练习叙事与情绪设计的长期成长陪伴型IP。",
     designHeading: "我对设计的理解",
     designCopy: "设计不是把信息装饰得更满，而是建立判断、组织证据，让复杂系统变得清晰、可信、有人情味。",
     experienceHeading: "工作经历",
@@ -1312,17 +1312,17 @@ export default function PortfolioHome() {
               </div>
               <div className="about-experience-list">
                 <section>
-                  <time>2026 — NOW</time>
+                  <time>2026.03 — 2026.05</time>
                   <strong>Alibaba Lazada · UX Designer</strong>
-                  <p>{language === "zh" ? "互动增长产品 UX、用户增长活动设计与 AI 工作流探索。" : "Interactive growth products, campaign design, and AI workflow exploration."}</p>
+                  <p>{language === "zh" ? "互动玩法UX设计、用户增长活动设计与AI工作流探索。" : "Interactive growth products, campaign design, and AI workflow exploration."}</p>
                 </section>
                 <section>
                   <time>2023.07 — 2025.10</time>
                   <strong>Pinduoduo TEMU · UX Designer</strong>
-                  <p>{language === "zh" ? "负责跨境电商增长体验，覆盖 Credit Back、Win Credit、Balance 与大促活动。" : "Growth experiences across Credit Back, Win Credit, Balance, and major campaigns."}</p>
+                  <p>{language === "zh" ? "负责跨境电商增长体验，覆盖 Credit Back、Win Credit、Balance与大促活动。" : "Growth experiences across Credit Back, Win Credit, Balance, and major campaigns."}</p>
                 </section>
                 <section>
-                  <time>2022</time>
+                  <time>2022.06-2022.10</time>
                   <strong>OPPO · User Research Analyst</strong>
                   <p>{language === "zh" ? "实验设计、用户研究与统计分析，研究成果应用于 Find X5 系列。" : "Experimental design, user research, and statistical analysis for the Find X5 series."}</p>
                 </section>
@@ -1339,13 +1339,13 @@ export default function PortfolioHome() {
               <span>EDUCATION.LOG</span>
               <h3>{text.educationHeading}</h3>
               <p>
-                <b>2020—23</b>
+                <b>2020—2023</b>
                 {language === "zh"
                   ? " 湖南大学 · 艺术设计硕士"
                   : " Hunan University · MA, Art & Design"}
               </p>
               <p>
-                <b>2013—17</b>
+                <b>2013—2017</b>
                 {language === "zh"
                   ? " 南华大学 · 视觉传达设计本科"
                   : " University of South China · BA, Visual Communication"}
