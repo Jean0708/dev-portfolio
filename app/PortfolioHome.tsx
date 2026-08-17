@@ -564,7 +564,7 @@ export default function PortfolioHome() {
     const context = gsap.context(() => {
       if (reducedMotion) {
         gsap.set([".home-theme-title", ".home-loading-card"], { autoAlpha: 1 });
-        gsap.set(".home-loading-progress i", { scaleX: 1 });
+        gsap.set(".home-loading-progress i", { width: "100%" });
         gsap.set(".home-loading-ok", { scale: 1 });
         return;
       }
@@ -590,9 +590,9 @@ export default function PortfolioHome() {
         )
         .fromTo(
           ".home-loading-progress i",
-          { scaleX: 0.08 },
+          { width: "8%" },
           {
-            scaleX: 1,
+            width: "100%",
             duration: 2.1,
             ease: "steps(14)",
           },

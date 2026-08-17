@@ -2145,6 +2145,7 @@ footer {
 }
 
 .home-loading-card {
+  position: relative;
   display: grid;
   width: min(270px, 72vw);
   grid-template-columns: minmax(0, 1fr) 44px;
@@ -2200,8 +2201,11 @@ footer {
 
 .home-loading-ok {
   display: grid;
-  grid-row: 1 / 3;
-  grid-column: 2;
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  bottom: 11px;
+  width: 44px;
   place-items: center;
   border: 1px solid #132b63;
   border-radius: 8px;
@@ -2220,12 +2224,10 @@ footer {
 
 .home-loading-progress i {
   display: block;
-  width: 100%;
+  width: 8%;
   height: 100%;
   background: repeating-linear-gradient(90deg, #2a64c6 0 7px, #fff 7px 9px);
-  transform: scaleX(0.08);
-  transform-origin: left center;
-  will-change: transform;
+  will-change: width;
 }
 
 .home-phase-opening .home-opening-layer {
