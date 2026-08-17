@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 const TRACK_LENGTH = 16;
 
-function createAmbientWave() {
+function createSunnyWalkLoop() {
   const sampleRate = 16000;
   const sampleCount = sampleRate * TRACK_LENGTH;
   const buffer = new ArrayBuffer(44 + sampleCount * 2);
@@ -37,29 +37,41 @@ function createAmbientWave() {
 
   const chords = [
     [261.63, 329.63, 392],
-    [220, 277.18, 329.63],
-    [174.61, 220, 261.63],
-    [196, 246.94, 293.66],
+    [349.23, 440, 523.25],
+    [392, 493.88, 587.33],
+    [220, 261.63, 329.63],
   ];
+  const melodies = [
+    [523.25, 659.25, 783.99, 659.25, 587.33, 659.25, 880, 783.99],
+    [659.25, 783.99, 880, 783.99, 659.25, 587.33, 659.25, 783.99],
+    [783.99, 880, 987.77, 880, 783.99, 659.25, 783.99, 880],
+    [659.25, 783.99, 880, 987.77, 880, 783.99, 659.25, 587.33],
+  ];
+  const arpeggioPattern = [0, 1, 2, 1, 0, 1, 2, 1];
 
   for (let index = 0; index < sampleCount; index += 1) {
     const time = index / sampleRate;
+    const section = Math.floor(time / 4) % chords.length;
     const localTime = time % 4;
-    const chord = chords[Math.floor(time / 4) % chords.length];
-    const attack = Math.min(1, localTime / 0.55);
-    const release = Math.min(1, (4 - localTime) / 1.15);
-    const envelope = Math.max(0, attack * release);
-    const shimmer = Math.sin(Math.PI * 2 * 0.1 * time) * 0.08 + 0.92;
+    const chord = chords[section];
+    const noteIndex = Math.floor(localTime / 0.5) % arpeggioPattern.length;
+    const noteTime = localTime % 0.5;
+    const arpeggioFrequency = chord[arpeggioPattern[noteIndex]];
+    const melodyFrequency = melodies[section][noteIndex];
+    const pluckEnvelope = Math.exp(-noteTime * 8) * Math.min(1, noteTime * 80);
+    const melodyEnvelope = Math.exp(-noteTime * 5) * Math.min(1, noteTime * 60);
+    const padEnvelope = 0.75 + Math.sin(Math.PI * 2 * localTime / 4) * 0.08;
     let sample = 0;
 
     for (const frequency of chord) {
-      sample += Math.sin(Math.PI * 2 * frequency * time) * 0.075;
-      sample += Math.sin(Math.PI * 2 * frequency * 2 * time) * 0.014;
+      sample += Math.sin(Math.PI * 2 * frequency * time) * 0.028 * padEnvelope;
+      sample += Math.sin(Math.PI * 2 * frequency * 2 * time) * 0.006 * padEnvelope;
     }
 
-    const pulse = Math.exp(-Math.pow((localTime % 1) * 5, 2));
-    sample += Math.sin(Math.PI * 2 * chord[1] * 2 * time) * pulse * 0.025;
-    const output = Math.max(-1, Math.min(1, sample * envelope * shimmer));
+    sample += Math.sin(Math.PI * 2 * arpeggioFrequency * time) * pluckEnvelope * 0.13;
+    sample += Math.sin(Math.PI * 2 * arpeggioFrequency * 2 * time) * pluckEnvelope * 0.018;
+    sample += Math.sin(Math.PI * 2 * melodyFrequency * time) * melodyEnvelope * 0.055;
+    const output = Math.max(-1, Math.min(1, sample));
     view.setInt16(44 + index * 2, output * 32767, true);
   }
 
@@ -75,7 +87,7 @@ export function MusicPlayer() {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    const url = URL.createObjectURL(createAmbientWave());
+    const url = URL.createObjectURL(createSunnyWalkLoop());
     audio.src = url;
     audio.volume = 0.38;
     audio.load();
@@ -112,8 +124,8 @@ export function MusicPlayer() {
       </div>
       <div className="music-player-copy">
         <span>NOW PLAYING</span>
-        <strong>萝卜狗的午后</strong>
-        <small>RADDIE AMBIENT LOOP</small>
+        <strong>萝卜狗的晴天散步</strong>
+        <small>RADDIE SUNNY WALK</small>
       </div>
       <button
         type="button"
