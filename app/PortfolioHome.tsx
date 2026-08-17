@@ -1117,7 +1117,7 @@ export default function PortfolioHome() {
                     ref={videoRef}
                     src="/assets/home/luobogou-opening.mp4"
                     poster="/assets/home/intro-background.png"
-                    preload="auto"
+                    preload="none"
                     muted={muted}
                     playsInline
                     onPlay={() => setVideoPlaying(true)}
@@ -1262,6 +1262,8 @@ export default function PortfolioHome() {
             className="desktop-scene-bg"
             src="/assets/ip/luobogou/scenes/country-street.png"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
           <div className="desktop-scene-shade" />
           <div className="desktop-section-heading about-heading is-light">
@@ -1293,7 +1295,7 @@ export default function PortfolioHome() {
               onFocus={() => setTopCard("profile")}
               boundaryRef={aboutBoardRef}
             >
-              <img src="/assets/home/about/jean-portrait.png" alt="Jean" />
+              <img src="/assets/home/about/jean-portrait.png" alt="Jean" loading="lazy" decoding="async" />
             </DraggableCard>
 
             <DraggableCard
@@ -1382,7 +1384,7 @@ export default function PortfolioHome() {
               boundaryRef={aboutBoardRef}
               boundaryPadding={0}
             >
-              <img className="about-felt-star-base" src="/assets/home/about/felt-star.png" alt="Yellow felt star" />
+              <img className="about-felt-star-base" src="/assets/home/about/felt-star.png" alt="Yellow felt star" loading="lazy" decoding="async" />
             </DraggableCard>
 
             <DraggableCard
@@ -1393,7 +1395,7 @@ export default function PortfolioHome() {
               boundaryRef={aboutBoardRef}
               boundaryPadding={0}
             >
-              <img src="/assets/home/about/raddie-medallion.png" alt="Raddie felt medallion" />
+              <img src="/assets/home/about/raddie-medallion.png" alt="Raddie felt medallion" loading="lazy" decoding="async" />
             </DraggableCard>
 
             <DraggableCard
@@ -1404,7 +1406,7 @@ export default function PortfolioHome() {
               boundaryRef={aboutBoardRef}
               boundaryPadding={0}
             >
-              <img src="/assets/home/about/radish-badge.png" alt="Radish felt badge" />
+              <img src="/assets/home/about/radish-badge.png" alt="Radish felt badge" loading="lazy" decoding="async" />
             </DraggableCard>
           </div>
 
@@ -1464,6 +1466,8 @@ export default function PortfolioHome() {
             className="desktop-scene-bg"
             src="/assets/ip/luobogou/scenes/mushroom-forest.png"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
           <div className="desktop-scene-shade" />
           <div className="desktop-section-heading is-light work-heading">
@@ -1538,7 +1542,7 @@ export default function PortfolioHome() {
                 aria-label={`${language === "zh" ? item.title : item.englishTitle} — ${language === "zh" ? "在当前窗口查看" : "View in current window"}`}
               >
                 <span className="desktop-work-thumb">
-                  <img src={item.covers.square} alt="" />
+                <img src={item.covers.square} alt="" loading="lazy" decoding="async" />
                 </span>
                 <span className="desktop-work-card-copy">
                   <small>{item.index}</small>
@@ -1605,6 +1609,8 @@ export default function PortfolioHome() {
             className="desktop-scene-bg"
             src="/assets/ip/luobogou/scenes/dream-home.png"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
           <div className="desktop-scene-shade" />
           <div className="desktop-skills-layout">

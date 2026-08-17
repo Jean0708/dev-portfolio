@@ -3103,10 +3103,13 @@ footer {
 }
 
 .desktop-case-info h3 {
+  min-width: 0;
+  max-width: 100%;
   margin: 18px 0 8px;
   font-size: var(--case-title-size, clamp(1.85rem, 3vw, 3.45rem));
   font-weight: 500;
   line-height: 0.98;
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
