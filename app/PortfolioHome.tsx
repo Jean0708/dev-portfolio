@@ -1453,7 +1453,7 @@ export default function PortfolioHome() {
         >
           <img
             className="desktop-scene-bg"
-            src="/assets/ip/luobogou/scenes/mushroom-forest.png"
+            src="/assets/ip/luobogou/scenes/mushroom-forest-night.jpg"
             alt=""
             loading="lazy"
             decoding="async"
