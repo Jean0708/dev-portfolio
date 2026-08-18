@@ -2167,7 +2167,7 @@ footer {
 
 .home-loading-card:hover,
 .home-loading-card:focus-visible {
-  background: #f4ff9c;
+  background: rgba(255, 255, 255, 0.86);
   box-shadow: 3px 4px 0 rgba(19, 43, 99, 0.42);
   transform: translate(3px, 3px);
 }
@@ -2204,19 +2204,21 @@ footer {
   position: absolute;
   top: 11px;
   right: 11px;
-  bottom: 11px;
   width: 44px;
+  height: 40px;
   place-items: center;
   border: 1px solid #132b63;
   border-radius: 8px;
   background: var(--desktop-lime);
+  box-shadow: 3px 3px 0 rgba(19, 43, 99, 0.42);
   font-size: 0.68rem;
   font-weight: 700;
-  transform-origin: center;
-  will-change: transform;
 }
 
 .home-loading-progress {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid #132b63;
   background: #fff;
@@ -2939,6 +2941,7 @@ footer {
 }
 
 .inline-case-viewer {
+  position: relative;
   display: grid;
   grid-template-columns: 106px minmax(0, 1fr);
   min-height: 0;
@@ -3072,21 +3075,21 @@ footer {
 .inline-case-reading-status {
   position: absolute;
   z-index: 4;
-  right: 12px;
-  bottom: 12px;
+  right: 10px;
+  bottom: 10px;
   display: grid;
   width: max-content;
-  min-width: 64px;
-  height: 30px;
+  min-width: 52px;
+  height: 24px;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 8px;
   place-items: center;
   pointer-events: none;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: rgba(12, 18, 13, 0.88);
   font-family: "Courier New", monospace;
-  font-size: 0.62rem;
+  font-size: 0.5rem;
 }
 
 .desktop-case-info {

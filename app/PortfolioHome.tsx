@@ -597,17 +597,6 @@ export default function PortfolioHome() {
             ease: "steps(14)",
           },
           ">-0.04",
-        )
-        .to(
-          ".home-loading-ok",
-          {
-            scale: 1.12,
-            duration: 0.72,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          },
-          ">-0.04",
         );
       homeLoadingTimelineRef.current = timeline;
     }, home);

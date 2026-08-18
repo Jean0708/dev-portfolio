@@ -254,9 +254,9 @@ export function InlineCaseDocumentViewer({
                       </figure>
                     ))}
                   </div>
-                  <div className="inline-case-reading-status" aria-live="polite">
-                    {activePage + 1} / {pages.length}
-                  </div>
+                </div>
+                <div className="inline-case-reading-status" aria-live="polite">
+                  {activePage + 1} / {pages.length}
                 </div>
               </div>
             </div>
@@ -267,9 +267,9 @@ export function InlineCaseDocumentViewer({
           <span>{project.index} / {project.year}</span>
           <h3>
             {project.englishTitle.includes(" / ")
-              ? project.englishTitle.split(" / ").map((phrase, index, phrases) => (
+              ? project.englishTitle.split(" / ").map((phrase) => (
                   <span className="case-title-phrase" key={phrase}>
-                    {phrase}{index < phrases.length - 1 ? " /" : ""}
+                    {phrase}
                   </span>
                 ))
               : project.englishTitle}
