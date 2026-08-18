@@ -119,7 +119,7 @@ export function GalleryTunnel({
         color: "#fffaf0",
         side: THREE.DoubleSide,
       });
-      loader.load(image.src, (texture) => {
+      loader.load(image.thumbSrc, (texture) => {
         if (destroyed) {
           texture.dispose();
           return;

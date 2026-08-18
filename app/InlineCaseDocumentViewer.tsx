@@ -215,48 +215,55 @@ export function InlineCaseDocumentViewer({
                       onClick={() => selectPage(index)}
                       aria-label={`${isChinese ? "第" : "Page"} ${index + 1}`}
                     >
-                      <img src={page} alt="" loading={index > 2 ? "lazy" : "eager"} />
+                      <img
+                        src={page}
+                        alt=""
+                        loading={index === activePage ? "eager" : "lazy"}
+                        decoding="async"
+                      />
                       <span>{String(index + 1).padStart(2, "0")}</span>
                     </button>
                   ))}
                 </aside>
 
-                <div
-                  ref={pageViewportRef}
-                  className="inline-case-page-viewport"
-                  tabIndex={0}
-                  onScroll={syncActivePage}
-                  onKeyDown={(event) => {
-                    if (event.key === "PageUp") {
-                      selectPage(activePage - 1);
-                      event.preventDefault();
-                    }
-                    if (event.key === "PageDown") {
-                      selectPage(activePage + 1);
-                      event.preventDefault();
-                    }
-                  }}
-                >
-                  <div className="inline-case-page-stack" style={{ width: `${zoom}%` }}>
-                    {pages.map((page, index) => (
-                      <figure
-                        key={page}
-                        ref={(node) => { pageRefs.current[index] = node; }}
-                        data-page-index={index}
-                        className={activePage === index ? "is-active" : ""}
-                      >
-                        <img
-                          src={page}
-                          alt={`${project.englishTitle} · ${isChinese ? "第" : "Page"} ${index + 1}`}
-                          loading={index < 2 ? "eager" : "lazy"}
-                        />
-                        <figcaption>{String(index + 1).padStart(2, "0")}</figcaption>
-                      </figure>
-                    ))}
+                <div className="inline-case-page-shell">
+                  <div
+                    ref={pageViewportRef}
+                    className="inline-case-page-viewport"
+                    tabIndex={0}
+                    onScroll={syncActivePage}
+                    onKeyDown={(event) => {
+                      if (event.key === "PageUp") {
+                        selectPage(activePage - 1);
+                        event.preventDefault();
+                      }
+                      if (event.key === "PageDown") {
+                        selectPage(activePage + 1);
+                        event.preventDefault();
+                      }
+                    }}
+                  >
+                    <div className="inline-case-page-stack" style={{ width: `${zoom}%` }}>
+                      {pages.map((page, index) => (
+                        <figure
+                          key={page}
+                          ref={(node) => { pageRefs.current[index] = node; }}
+                          data-page-index={index}
+                          className={activePage === index ? "is-active" : ""}
+                        >
+                          <img
+                            src={page}
+                            alt={`${project.englishTitle} · ${isChinese ? "第" : "Page"} ${index + 1}`}
+                            loading={index === activePage ? "eager" : "lazy"}
+                            decoding="async"
+                          />
+                        </figure>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="inline-case-reading-status" aria-live="polite">
-                  {activePage + 1} / {pages.length}
+                  <div className="inline-case-reading-status" aria-live="polite">
+                    {activePage + 1} / {pages.length}
+                  </div>
                 </div>
               </div>
             </div>
