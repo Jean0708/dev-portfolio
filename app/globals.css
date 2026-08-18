@@ -3109,19 +3109,21 @@ footer {
   min-width: 0;
   max-width: 100%;
   margin: 18px 0 8px;
-  font-size: var(--case-title-size, clamp(1.85rem, 3vw, 3.45rem));
+  font-size: var(--case-title-size, clamp(1.35rem, 3.4cqw, 3.45rem));
   font-weight: 500;
   line-height: 0.98;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-wrap: balance;
 }
 
 .desktop-case-info.is-compact-title {
-  --case-title-size: clamp(1.75rem, 2.65vw, 3.05rem);
+  --case-title-size: clamp(1.3rem, 3.1cqw, 3.05rem);
 }
 
 .desktop-case-info.is-daily-lazcash {
-  --case-title-size: clamp(1.85rem, calc(3vw - 1px), 3.45rem);
+  --case-title-size: clamp(1.35rem, 3.4cqw, 3.45rem);
 }
 
 .case-title-phrase {
