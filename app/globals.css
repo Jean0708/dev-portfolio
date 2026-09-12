@@ -3823,6 +3823,13 @@ footer {
   color: inherit;
 }
 
+.desktop-footer .icp-record-link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
 @media (max-width: 980px) {
   .desktop-portfolio {
     --desktop-type-hero: 3.6rem;

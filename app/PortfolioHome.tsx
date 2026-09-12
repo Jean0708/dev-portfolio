@@ -1733,6 +1733,14 @@ export default function PortfolioHome() {
 
           <footer className="desktop-footer">
             <span>© 2026 Jean</span>
+            <a
+              className="icp-record-link"
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              湘ICP备2026037520号-1
+            </a>
             <a href="mailto:jeanzhou.design@outlook.com">jeanzhou.design@outlook.com</a>
           </footer>
         </section>
