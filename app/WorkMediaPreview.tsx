@@ -11,6 +11,14 @@ export type VideoActivity = {
   label: string;
   src?: string;
   poster?: string;
+  background?: string;
+};
+
+export type MobileDemoProject = {
+  id: string;
+  title: string;
+  label: string;
+  videoSrc: string;
 };
 
 export function VideoWorkPreview({
@@ -47,7 +55,27 @@ export function VideoWorkPreview({
         </div>
 
         <div className="work-video-stage">
-          {active.src ? (
+          {active.src && active.background ? (
+            <div
+              className="work-video-phone-stage"
+              style={{ backgroundImage: `url(${active.background})` }}
+            >
+              <div className="work-video-phone-device">
+                <span aria-hidden="true" />
+                <video
+                  key={active.src}
+                  src={active.src}
+                  poster={active.poster}
+                  controls
+                  controlsList="nodownload"
+                  disablePictureInPicture
+                  playsInline
+                  preload="metadata"
+                  aria-label={active.title}
+                />
+              </div>
+            </div>
+          ) : active.src ? (
             <video
               key={active.src}
               src={active.src}
@@ -80,41 +108,53 @@ export function VideoWorkPreview({
 }
 
 export function MobileDemoPreview({
-  title,
-  videoSrc,
-  url,
+  projects,
 }: {
-  title: string;
-  videoSrc: string;
-  url?: string;
+  projects: MobileDemoProject[];
 }) {
+  const [activeId, setActiveId] = useState(projects[0]?.id ?? "");
+  const active = projects.find((project) => project.id === activeId) ?? projects[0];
+
+  if (!active) return null;
+
   return (
     <div className="mobile-demo-preview">
-      <div className="mobile-demo-device">
-        <span aria-hidden="true" />
-        {url ? (
-          <iframe
-            src={url}
-            title={title}
-            sandbox="allow-forms allow-same-origin allow-scripts"
-          />
-        ) : (
-          <video
-            src={videoSrc}
-            title={title}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            controlsList="nodownload"
-            disablePictureInPicture
-          />
-        )}
+      <div className="mobile-demo-browser">
+        <div className="mobile-demo-project-list" aria-label="App demo projects">
+          {projects.map((project, index) => (
+            <button
+              key={project.id}
+              type="button"
+              className={project.id === active.id ? "is-active" : ""}
+              onClick={() => setActiveId(project.id)}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{project.title}</strong>
+              <Play weight="fill" aria-label={`${project.title} demo ready`} />
+            </button>
+          ))}
+        </div>
+        <div className="mobile-demo-stage">
+          <div className="mobile-demo-device">
+            <span aria-hidden="true" />
+            <video
+              key={active.videoSrc}
+              src={active.videoSrc}
+              title={active.title}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              controlsList="nodownload"
+              disablePictureInPicture
+            />
+          </div>
+        </div>
       </div>
       <div className="work-media-status">
         <DeviceMobile weight="fill" />
-        <span>MOBILE DEMO / PORTRAIT / FIXED DEVICE</span>
+        <span>{active.label} / MOBILE DEMO / PORTRAIT</span>
       </div>
     </div>
   );

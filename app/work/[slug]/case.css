@@ -609,6 +609,7 @@
 }
 
 .case-footer {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding-top: 28px;
@@ -616,6 +617,13 @@
   font-size: 0.57rem;
   font-weight: 700;
   letter-spacing: 0.11em;
+}
+
+.case-footer .icp-record-link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 @media (max-width: 720px) {
@@ -692,5 +700,11 @@
   .case-footer {
     flex-direction: column;
     gap: 14px;
+  }
+
+  .case-footer .icp-record-link {
+    position: static;
+    transform: none;
+    order: 2;
   }
 }

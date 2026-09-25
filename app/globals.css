@@ -5128,8 +5128,8 @@ footer {
 .desktop-mobile-demo-window {
   top: 0;
   right: 12vw;
-  width: min(390px, 32vw);
-  min-width: 330px;
+  width: min(660px, 50vw);
+  min-width: 510px;
   min-height: min(626px, 90vh);
   height: min(650px, 90vh);
 }
@@ -5215,6 +5215,54 @@ footer {
   background: #101714;
 }
 
+.work-video-phone-stage {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 20px;
+  place-items: center;
+  overflow: hidden;
+  background-color: #142ec9;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.work-video-phone-device {
+  position: relative;
+  display: grid;
+  width: auto;
+  height: min(88%, 390px);
+  max-width: calc(100% - 40px);
+  aspect-ratio: 375 / 812;
+  overflow: hidden;
+  border: 5px solid #171717;
+  border-radius: 25px;
+  background: #171717;
+  box-shadow: 5px 6px 0 rgba(23, 23, 23, 0.28);
+}
+
+.work-video-phone-device > span {
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  left: 50%;
+  width: 48px;
+  height: 7px;
+  border-radius: 999px;
+  background: #171717;
+  transform: translateX(-50%);
+}
+
+.work-video-phone-device video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #171717;
+}
+
 .work-video-pending {
   position: relative;
   display: grid;
@@ -5286,13 +5334,78 @@ footer {
   background: #dcecf4;
 }
 
+.mobile-demo-browser {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(150px, 0.36fr) minmax(0, 1fr);
+}
+
+.mobile-demo-project-list {
+  min-height: 0;
+  padding: 8px;
+  overflow-y: auto;
+  border-right: 1px solid #171717;
+  background: #e8e6de;
+}
+
+.mobile-demo-project-list button {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 16px;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  gap: 6px;
+  padding: 7px;
+  color: #171717;
+  text-align: left;
+  border: 1px solid #a5a39d;
+  border-radius: 3px;
+  background: #fffdf5;
+  cursor: pointer;
+}
+
+.mobile-demo-project-list button + button {
+  margin-top: 6px;
+}
+
+.mobile-demo-project-list button.is-active {
+  border-color: #171717;
+  background: var(--desktop-lime);
+  box-shadow: 2px 2px 0 #171717;
+}
+
+.mobile-demo-project-list span {
+  color: #666;
+  font-family: "Courier New", monospace;
+  font-size: 0.58rem;
+}
+
+.mobile-demo-project-list strong {
+  font-size: 0.67rem;
+  line-height: 1.25;
+}
+
+.mobile-demo-project-list svg {
+  width: 15px;
+  height: 15px;
+}
+
+.mobile-demo-stage {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  place-items: center;
+}
+
 .mobile-demo-device {
   position: relative;
   display: grid;
-  width: 260px;
-  height: 520px;
-  min-width: 260px;
-  min-height: 520px;
+  width: auto;
+  height: min(88%, 520px);
+  max-width: calc(100% - 28px);
+  aspect-ratio: 375 / 812;
+  min-width: 0;
+  min-height: 0;
   align-self: center;
   justify-self: center;
   margin: 14px auto;
@@ -5323,7 +5436,7 @@ footer {
   width: 100%;
   height: 100%;
   border: 0;
-  object-fit: cover;
+  object-fit: contain;
   background: #fff;
 }
 
@@ -5738,6 +5851,8 @@ footer {
     right: 12px;
     left: 12px;
     width: auto;
+    min-width: 0;
+    min-height: 0;
     height: 48vh;
   }
 
@@ -5761,6 +5876,33 @@ footer {
 
   .work-video-activity-list button + button {
     margin-top: 0;
+  }
+
+  .mobile-demo-browser {
+    grid-template-columns: 1fr;
+    grid-template-rows: 76px minmax(0, 1fr);
+  }
+
+  .mobile-demo-project-list {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: 0;
+    border-bottom: 1px solid #171717;
+  }
+
+  .mobile-demo-project-list button {
+    min-width: 150px;
+  }
+
+  .mobile-demo-project-list button + button {
+    margin-top: 0;
+  }
+
+  .mobile-demo-device {
+    height: min(86%, 440px);
+    margin: 10px auto;
   }
 
   .gallery-heading {

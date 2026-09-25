@@ -80,6 +80,14 @@ export function CasePageClient({
         <Link href="/#work">
           ← {isChinese ? "返回精选作品" : "BACK TO SELECTED WORK"}
         </Link>
+        <a
+          className="icp-record-link"
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          湘ICP备2026037520号-1
+        </a>
         <span>JEAN · PORTFOLIO V.02</span>
       </footer>
     </main>

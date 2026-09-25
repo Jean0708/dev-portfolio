@@ -19,17 +19,18 @@ import {
   useState,
 } from "react";
 import { DesktopWindow } from "../DesktopWindow";
-import { InlineCaseDocumentViewer } from "../InlineCaseDocumentViewer";
-import { moreCaseStudies } from "../caseData";
+import { LabProjectPreview } from "./LabProjectPreview";
+import { labProjects } from "./labData";
 
 export default function AILabPage() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const pageRef = useRef<HTMLElement>(null);
   const dragRef = useRef({ pointerId: -1, startX: 0, scrollLeft: 0, moved: false });
   const frameRef = useRef<number | null>(null);
-  const [activeIndex, setActiveIndex] = useState(Math.min(1, moreCaseStudies.length - 1));
+  const [activeIndex, setActiveIndex] = useState(Math.min(1, labProjects.length - 1));
   const [previewOpen, setPreviewOpen] = useState(false);
-  const activeCase = moreCaseStudies[activeIndex];
+  const [selectedSlug, setSelectedSlug] = useState(labProjects[Math.min(1, labProjects.length - 1)]?.slug ?? "");
+  const activeProject = labProjects.find((project) => project.slug === selectedSlug);
 
   useLayoutEffect(() => {
     const page = pageRef.current;
@@ -100,7 +101,7 @@ export default function AILabPage() {
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
-    const initialIndex = Math.min(1, moreCaseStudies.length - 1);
+    const initialIndex = Math.min(1, labProjects.length - 1);
     const frame = requestAnimationFrame(() => {
       const card = carousel.querySelector<HTMLElement>(`[data-card-index="${initialIndex}"]`);
       if (!card) return;
@@ -177,17 +178,17 @@ export default function AILabPage() {
           <ArrowLeft weight="bold" />
           返回作品桌面
         </Link>
-        <span>JEAN / MORE CASES</span>
-        <i>PAST WORK + NEW EXPLORATIONS</i>
+        <span>JEAN / AI LAB</span>
+        <i>PROTOTYPES + VIBE CODING ARCHIVE</i>
       </header>
 
       <section className="ai-lab-heading">
-        <p><Sparkle weight="fill" /> MORE CASES / EXPLORATIONS</p>
-        <h1>Pushing Boundaries</h1>
-        <span>Striving for self-breakthroughs and lifelong growth.</span>
+        <p><Sparkle weight="fill" /> AI LAB / VIBE CODING ARCHIVE</p>
+        <h1>Making Ideas Tangible</h1>
+        <span>从网页、App 原型到动画与视频，记录我如何用 AI 把想法快速做成可体验、可讨论、可继续迭代的作品。</span>
       </section>
 
-      <section className="ai-lab-carousel-shell" aria-label="更多案例拖拽卡片">
+      <section className="ai-lab-carousel-shell" aria-label="AI Lab 作品拖拽卡片">
         <div
           ref={carouselRef}
           className="ai-lab-carousel"
@@ -198,7 +199,7 @@ export default function AILabPage() {
           onPointerCancel={stopDrag}
         >
           <div className="ai-lab-carousel-spacer" aria-hidden="true" />
-          {moreCaseStudies.map((project, index) => (
+          {labProjects.map((project, index) => (
             <button
               type="button"
               key={project.slug}
@@ -213,42 +214,38 @@ export default function AILabPage() {
                   return;
                 }
                 setActiveIndex(index);
+                setSelectedSlug(project.slug);
                 setPreviewOpen(true);
               }}
-              aria-label={`查看完整案例：${project.title}`}
+              aria-label={`打开作品窗口：${project.title}`}
             >
               <span className="ai-lab-card-index">{project.index}</span>
               <div className="ai-lab-card-copy">
                 <h2>{project.title}</h2>
                 <p>{project.category}</p>
               </div>
-              <img src={project.covers.square} alt={project.englishTitle} draggable={false} />
+              <img src={project.cover} alt={project.englishTitle} draggable={false} />
               <span className="ai-lab-card-action">
-                VIEW CASE <ArrowUpRight weight="bold" />
+                OPEN {project.mediaLabel} <ArrowUpRight weight="bold" />
               </span>
             </button>
           ))}
           <div className="ai-lab-carousel-spacer" aria-hidden="true" />
         </div>
-        <p className="ai-lab-drag-hint"><HandGrabbing weight="fill" /> 左右拖动浏览 · 点击卡片阅读完整案例</p>
+        <p className="ai-lab-drag-hint"><HandGrabbing weight="fill" /> 左右拖动浏览 · 点击封面打开作品窗口</p>
       </section>
 
-      {previewOpen && activeCase && (
+      {previewOpen && activeProject && (
         <DesktopWindow
-          title={`${activeCase.index}_${activeCase.englishTitle.toUpperCase()}.CASE`}
-          className="ai-preview-window more-case-window"
+          title={`${activeProject.index}_${activeProject.englishTitle.toUpperCase().replaceAll(" ", "-")}.${activeProject.mediaKind.toUpperCase()}`}
+          className="ai-preview-window lab-project-window"
           centered
           topLayer
           zIndex={240}
           onFocus={() => undefined}
           onClose={() => setPreviewOpen(false)}
         >
-          <InlineCaseDocumentViewer
-            key={activeCase.slug}
-            project={activeCase}
-            language="zh"
-            initialMode="reader"
-          />
+          <LabProjectPreview key={activeProject.slug} project={activeProject} />
         </DesktopWindow>
       )}
     </main>

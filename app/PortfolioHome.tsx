@@ -30,7 +30,7 @@ import {
 } from "@phosphor-icons/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { featuredCaseStudies } from "./caseData";
 import { DesktopWindow } from "./DesktopWindow";
 import { DraggableCard } from "./DraggableCard";
@@ -53,6 +53,17 @@ const GalleryTunnel = dynamic(
     ),
   },
 );
+
+const subscribeToMobileBreakpoint = (onChange: () => void) => {
+  const mediaQuery = window.matchMedia("(max-width: 700px)");
+  mediaQuery.addEventListener("change", onChange);
+  return () => mediaQuery.removeEventListener("change", onChange);
+};
+
+const getMobileBreakpointSnapshot = () =>
+  window.matchMedia("(max-width: 700px)").matches;
+
+const getMobileBreakpointServerSnapshot = () => true;
 
 const sceneIds = ["home", "about", "work", "skills", "gallery"] as const;
 type HomePhase = "loading" | "opening";
@@ -122,7 +133,23 @@ const motionActivities = [
     id: "daily-lazcash",
     title: "Daily LazCash",
     label: "RESEARCH ASSISTANT",
-    poster: "/cases/projects/daily-lazcash/cover-16x9.png",
+    src: "/assets/work-media/daily-lazcash/daily-lazcash-demo.mp4",
+    background: "/assets/work-media/daily-lazcash/daily-lazcash-sky-background.png",
+  },
+] as const;
+
+const mobileDemoProjects = [
+  {
+    id: "mini-game-demo",
+    title: "Mini Game Demo",
+    label: "GAME DESIGN",
+    videoSrc: "/assets/work-media/mini-game-demo.mp4",
+  },
+  {
+    id: "daily-lazcash",
+    title: "Daily LazCash",
+    label: "RESEARCH ASSISTANT",
+    videoSrc: "/assets/work-media/daily-lazcash/daily-lazcash-demo.mp4",
   },
 ] as const;
 
@@ -298,6 +325,11 @@ export default function PortfolioHome() {
   const homeLoadingTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const { language } = usePortfolioLanguage();
   const text = copy[language];
+  const isMobileViewport = useSyncExternalStore(
+    subscribeToMobileBreakpoint,
+    getMobileBreakpointSnapshot,
+    getMobileBreakpointServerSnapshot,
+  );
   const [activeScene, setActiveScene] = useState(0);
   const [activeCase, setActiveCase] = useState(0);
   const [homePhase, setHomePhase] = useState<HomePhase>("loading");
@@ -314,6 +346,7 @@ export default function PortfolioHome() {
   const [resumeView, setResumeView] = useState<"overview" | "document">("overview");
   const [navOpen, setNavOpen] = useState(false);
   const [messageOpen, setMessageOpen] = useState(true);
+  const [messageTouched, setMessageTouched] = useState(false);
   const [workLayerTransitioning, setWorkLayerTransitioning] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState<string[]>([text.chatGreeting]);
@@ -325,6 +358,7 @@ export default function PortfolioHome() {
   const [topCard, setTopCard] = useState("design");
   const selectedCase =
     featuredCaseStudies[activeCase] ?? featuredCaseStudies[0];
+  const messageVisible = messageOpen && (!isMobileViewport || messageTouched);
 
   useLayoutEffect(() => {
     if (activeScene === 0) return;
@@ -1399,7 +1433,7 @@ export default function PortfolioHome() {
             </DraggableCard>
           </div>
 
-          {messageOpen && (
+          {messageVisible && (
             <DesktopWindow
               title={text.messageTitle}
               className="about-message-window"
@@ -1434,9 +1468,10 @@ export default function PortfolioHome() {
           <div className="desktop-icon-stack desktop-icon-stack-about">
             <button
               type="button"
-              className={messageOpen ? "is-open" : ""}
+              className={messageVisible ? "is-open" : ""}
               onClick={() => {
                 setMessageOpen(true);
+                setMessageTouched(true);
                 setTopWindow("message");
               }}
             >
@@ -1509,8 +1544,7 @@ export default function PortfolioHome() {
               onClose={() => setMobileDemoOpen(false)}
             >
               <MobileDemoPreview
-                title="Mobile product demo"
-                videoSrc="/assets/work-media/mini-game-demo.mp4"
+                projects={[...mobileDemoProjects]}
               />
             </DesktopWindow>
           )}
