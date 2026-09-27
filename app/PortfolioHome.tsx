@@ -1767,14 +1767,25 @@ export default function PortfolioHome() {
 
           <footer className="desktop-footer">
             <span>© 2026 Jean</span>
-            <a
-              className="icp-record-link"
-              href="https://beian.miit.gov.cn/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              湘ICP备2026037520号-1
-            </a>
+            <div className="footer-records">
+              <a
+                className="icp-record-link"
+                href="https://beian.miit.gov.cn/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                湘ICP备2026037520号-1
+              </a>
+              <a
+                className="police-record-link"
+                href="https://beian.mps.gov.cn/#/query/webSearch?code=43010402003137"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src="/assets/police-record.png" width={18} height={20} alt="" />
+                <span>湘公网安备43010402003137号</span>
+              </a>
+            </div>
             <a href="mailto:jeanzhou.design@outlook.com">jeanzhou.design@outlook.com</a>
           </footer>
         </section>

@@ -9,6 +9,7 @@ import {
   MagnifyingGlassMinus,
   MagnifyingGlassPlus,
   Minus,
+  SidebarSimple,
   Square,
   X,
 } from "@phosphor-icons/react";
@@ -67,6 +68,7 @@ export function ResizableDocumentWindow({
   const [isDragging, setIsDragging] = useState(false);
   const [activePage, setActivePage] = useState(0);
   const [zoom, setZoom] = useState(100);
+  const [thumbnailsOpen, setThumbnailsOpen] = useState(true);
   const [manualSize, setManualSize] = useState<{
     height?: number;
     width?: number;
@@ -81,6 +83,20 @@ export function ResizableDocumentWindow({
     return () => {
       document.removeEventListener("fullscreenchange", syncFullscreenState);
     };
+  }, []);
+
+  useEffect(() => {
+    const compactQuery = window.matchMedia("(max-width: 720px)");
+    const applyCompactReadingLayout = () => {
+      if (compactQuery.matches) {
+        setThumbnailsOpen(false);
+        setZoom(80);
+      }
+    };
+
+    applyCompactReadingLayout();
+    compactQuery.addEventListener("change", applyCompactReadingLayout);
+    return () => compactQuery.removeEventListener("change", applyCompactReadingLayout);
   }, []);
 
   const selectPage = (index: number) => {
@@ -405,8 +421,20 @@ export function ResizableDocumentWindow({
                 <FilePdf weight="fill" />
                 {isChinese ? "仅供查阅" : "VIEW ONLY"}
               </span>
+              {previewPages.length > 0 && (
+                <button
+                  type="button"
+                  className="document-thumbnail-toggle"
+                  aria-pressed={thumbnailsOpen}
+                  onClick={() => setThumbnailsOpen((value) => !value)}
+                >
+                  <SidebarSimple weight="bold" />
+                  {isChinese ? "缩略图" : "PAGES"}
+                </button>
+              )}
               <button
                 type="button"
+                className="document-window-toggle"
                 onClick={() => setIsMaximized((value) => !value)}
               >
                 {isMaximized
@@ -455,7 +483,7 @@ export function ResizableDocumentWindow({
             <div className="document-canvas" ref={canvasRef}>
               {previewPages.length > 0 ? (
                 <div
-                  className="document-pdf-viewer"
+                  className={`document-pdf-viewer ${thumbnailsOpen ? "has-thumbnails" : "is-thumbnails-collapsed"}`}
                   aria-label={`${title} ${
                     isChinese ? "案例页面预览" : "case-study page preview"
                   }`}

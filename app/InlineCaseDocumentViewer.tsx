@@ -57,6 +57,22 @@ export function InlineCaseDocumentViewer({
     return () => document.removeEventListener("fullscreenchange", syncFullscreen);
   }, []);
 
+  useEffect(() => {
+    const compactQuery = window.matchMedia("(max-width: 700px)");
+    const applyCompactReadingLayout = () => {
+      if (compactQuery.matches) {
+        // Use the full width for the page on phones. The thumbnail rail remains
+        // available through its toggle when readers need to jump between pages.
+        setThumbnailsOpen(false);
+        setZoom(80);
+      }
+    };
+
+    applyCompactReadingLayout();
+    compactQuery.addEventListener("change", applyCompactReadingLayout);
+    return () => compactQuery.removeEventListener("change", applyCompactReadingLayout);
+  }, []);
+
   const transitionTo = useCallback((nextMode: ViewerMode) => {
     const content = contentRef.current;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
